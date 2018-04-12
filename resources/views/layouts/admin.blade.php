@@ -45,10 +45,14 @@
 	<nav>
 	    <ul class="top-menu">
 		
-		<li id="home"><a href="{{route('sadmin')}}">Home</li>
+		<li id="home"><a href="{{route('home')}}">Home</li>
 		<li id="products"><a href="{{route('products')}}">Products</li>
 		<li id="services"><a href="{{route('services')}}">Services</a></li>
+	@if (auth()->check())
+        @if (auth()->user()->isAdmin())
 		<li id="settings"><a href="{{route('settings')}}">Settings</a></li>
+	@endif
+	@endif
 		<li>
 		
 		    <form name="search" action="{{route('search')}}" method="POST" role="search">
@@ -66,7 +70,7 @@
 	    </script>
     	@endif
 	
-	@if (Request::is('sadmin/products')||Request::is('corals')||Request::is('fish')||Request::is('corals/*')||Request::is('fish/*')
+	@if (Request::is('products')||Request::is('products/*')||Request::is('corals')||Request::is('fish')||Request::is('corals/*')||Request::is('fish/*')
 		||Request::is('aquariums')||Request::is('aquariums/*')||Request::is('chillers')||Request::is('chillers/*')
 		||Request::is('filters')||Request::is('filters/*')||Request::is('food')||Request::is('food/*')||Request::is('heaters')
 		||Request::is('heaters/*')||Request::is('sterilizers')||Request::is('sterilizers/*')
@@ -78,7 +82,7 @@
 	    p.className += " active";
 	    </script>
     	@endif
-	@if (Request::is('sadmin/services')||Request::is('waterparam')||Request::is('waterparam/*')||Request::is('project')||Request::is('project/*')
+	@if (Request::is('services')||Request::is('services/*')||Request::is('waterparam')||Request::is('waterparam/*')||Request::is('project')||Request::is('project/*')
 		||Request::is('reef')||Request::is('reef/*'))
 	    @include ('includes.servicesSidebar')
 	    <script>
@@ -86,7 +90,7 @@
 	    d.className += " active";
 	    </script>
 	@endif
-	@if (Request::is('sadmin/settings'))
+	@if (Request::is('sadmin/settings')||Request::is('sadmin/settings/*'))
 	    @include ('includes.settingsSidebar')
 	    <script>
 	    var d = document.getElementById("settings");

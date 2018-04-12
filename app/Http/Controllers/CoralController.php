@@ -32,7 +32,7 @@ class CoralController extends Controller
 	$corals = Coral::orderBy('item_number','ASC')->paginate(10);
 
         // load the view and pass the corals
-	return view('coral.coralIndex',compact('corals'))
+	return view('products.coral.coralIndex',compact('corals'))
             ->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
@@ -44,7 +44,7 @@ class CoralController extends Controller
      public function create()
     {
         // load the create form (app/views/corals/create.blade.php)
-        return view('coral.coralCreate');
+        return view('products.coral.coralCreate');
     }
 
     /**
@@ -65,8 +65,9 @@ class CoralController extends Controller
 	if(Input::file()){
 	$image = Input::file('photo');
     	$fileName  = time() . '.' . $image->getClientOriginalExtension();
-    	$path = public_path('/uploads/photo/' . $fileName);
-	Image::make(Input::file('photo'))->resize(100,100)->save($fileName);
+    	$path = public_path('uploads/coral/'.$fileName);
+	Image::make(Input::file('photo'))->resize(100,100)->save($path);
+//	$image->move($path);
 	$coral->item_number = $request -> item_number;
 	$coral->name = $request -> name;
 	$coral->photo = $fileName;
@@ -102,7 +103,7 @@ class CoralController extends Controller
 	 $coral = Coral::with('coralColors')->find($coral->id);
         // show the view and pass the coral to it
 	//dd($coral);
-	 return View::make('coral.coralShow',compact('coral'));
+	 return View::make('products.coral.coralShow',compact('coral'));
     }
     
     /**
@@ -114,7 +115,7 @@ class CoralController extends Controller
     public function edit($id)
     {
 	$coral = Coral::find($id);
-        return view('coral.coralEdit',compact('coral'));
+        return view('products.coral.coralEdit',compact('coral'));
     }
     
      /**
@@ -134,8 +135,8 @@ class CoralController extends Controller
 	if(Input::file()){
 	$image = Input::file('photo');
     	$fileName  = time() . '.' . $image->getClientOriginalExtension();
-    	$path = public_path('/uploads/photo/$id/' . $fileName);
-	Image::make(Input::file('photo'))->resize(100,100)->save($fileName);
+    	$path = public_path('uploads/coral/' . $fileName);
+	Image::make(Input::file('photo'))->resize(100,100)->save($path);
 	Coral::where('id', $id)->update(array('photo' => $fileName,
 			'item_number'=>Input::get('item_number'),
 			'name'=>Input::get('name'),
@@ -167,7 +168,7 @@ class CoralController extends Controller
 
     public function showColors(Request $request,$id){
     $coral = Coral::find($id);
-    return View::make('coral.coralUpdateQuantity',compact('coral'));
+    return View::make('products.coral.coralUpdateQuantity',compact('coral'));
     }
     
 	// updating corals quantity
@@ -181,5 +182,7 @@ class CoralController extends Controller
 	    return redirect()->route('corals.index')
                         ->with('success','Colors updated successfully');
     }
+    
+
 }
 

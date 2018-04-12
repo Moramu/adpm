@@ -18,7 +18,7 @@ class ProjectController extends Controller
 	$project = Project::orderBy('created_at','ASC')->paginate(10);
 
 
-        return view('project.projectIndex',compact ('project'))
+        return view('services.project.projectIndex',compact ('project'))
 	    ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function create()
     {
 	$aquariums = Aquarium::all()->pluck('name','id');
-        return view('project.projectCreate',compact('aquariums'));
+        return view('services.project.projectCreate',compact('aquariums'));
     }
 
     /**

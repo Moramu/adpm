@@ -18,122 +18,130 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::any('sadmin/search','SearchController@search')->name('search');
+Route::any('products/search','SearchController@search')->name('search');
 
 
 /** Test Routes **/
+Route::get('test', 'ReefController@printInvoice');
+
 
 /** Excel Controller **/
 Route::resource('excel', 'ExcelController');
 
-Route::get('additives/downloadExcel/{type}', 'ExcelController@downloadExcelAdditives');
-Route::post('additives/excel', 'ExcelController@storeAdditives')->name('importAdditives');
-Route::get('additives/additivesExcelIndex', 'ExcelController@additivesIndex')->name('additivesExcelIndex');
+Route::get('products/additives/downloadExcel/{type}', 'ExcelController@downloadExcelAdditives');
+Route::post('products/additives/excel', 'ExcelController@storeAdditives')->name('importAdditives');
+Route::get('products/additives/additivesExcelIndex', 'ExcelController@additivesIndex')->name('additivesExcelIndex');
 
-Route::get('corals/downloadExcel/{type}', 'ExcelController@downloadExcelCorals');
-Route::post('corals/excel', 'ExcelController@storeCoral')->name('importCorals');
-Route::get('corals/coralExcelIndex', 'ExcelController@coralIndex')->name('coralExcelIndex');
+Route::get('products/corals/downloadExcel/{type}', 'ExcelController@downloadExcelCorals');
+Route::post('products/corals/excel', 'ExcelController@storeCoral')->name('importCorals');
+Route::get('products/products/corals/coralExcelIndex', 'ExcelController@coralIndex')->name('coralExcelIndex');
 
-Route::get('aquariums/downloadExcel/{type}', 'ExcelController@downloadExcelAquariums');
-Route::post('aquariums/excel', 'ExcelController@storeAquariums')->name('importAquariums');
-Route::get('aquariums/aquariumsExcelIndex', 'ExcelController@aquariumsIndex')->name('aquariumsExcelIndex');
+Route::get('products/aquariums/downloadExcel/{type}', 'ExcelController@downloadExcelAquariums');
+Route::post('products/aquariums/excel', 'ExcelController@storeAquariums')->name('importAquariums');
+Route::get('products/aquariums/aquariumsExcelIndex', 'ExcelController@aquariumsIndex')->name('aquariumsExcelIndex');
 
-Route::get('chillers/downloadExcel/{type}', 'ExcelController@downloadExcelChillers');
-Route::post('chillers/excel', 'ExcelController@storeChillers')->name('importChillers');
-Route::get('chillers/chillersExcelIndex', 'ExcelController@chillersIndex')->name('chillersExcelIndex');
+Route::get('products/chillers/downloadExcel/{type}', 'ExcelController@downloadExcelChillers');
+Route::post('products/chillers/excel', 'ExcelController@storeChillers')->name('importChillers');
+Route::get('products/chillers/chillersExcelIndex', 'ExcelController@chillersIndex')->name('chillersExcelIndex');
 
-Route::get('filters/downloadExcel/{type}', 'ExcelController@downloadExcelFilters');
-Route::post('filters/excel', 'ExcelController@storeFilters')->name('importFilters');
-Route::get('filters/filtersExcelIndex', 'ExcelController@filtersIndex')->name('filtersExcelIndex');
+Route::get('products/filters/downloadExcel/{type}', 'ExcelController@downloadExcelFilters');
+Route::post('products/filters/excel', 'ExcelController@storeFilters')->name('importFilters');
+Route::get('products/filters/filtersExcelIndex', 'ExcelController@filtersIndex')->name('filtersExcelIndex');
 
-Route::get('food/downloadExcel/{type}', 'ExcelController@downloadExcelFood');
-Route::post('food/excel', 'ExcelController@storeFood')->name('importFood');
-Route::get('food/foodExcelIndex', 'ExcelController@foodIndex')->name('foodExcelIndex');
+Route::get('products/food/downloadExcel/{type}', 'ExcelController@downloadExcelFood');
+Route::post('products/food/excel', 'ExcelController@storeFood')->name('importFood');
+Route::get('products/food/foodExcelIndex', 'ExcelController@foodIndex')->name('foodExcelIndex');
 
-Route::get('heaters/downloadExcel/{type}', 'ExcelController@downloadExcelHeaters');
-Route::post('heaters/excel', 'ExcelController@storeHeaters')->name('importHeaters');
-Route::get('heaters/heatersExcelIndex', 'ExcelController@heatersIndex')->name('heatersExcelIndex');
+Route::get('products/heaters/downloadExcel/{type}', 'ExcelController@downloadExcelHeaters');
+Route::post('products/heaters/excel', 'ExcelController@storeHeaters')->name('importHeaters');
+Route::get('products/heaters/heatersExcelIndex', 'ExcelController@heatersIndex')->name('heatersExcelIndex');
 
-Route::get('lightings/downloadExcel/{type}', 'ExcelController@downloadExcelLightings');
-Route::post('lightings/excel', 'ExcelController@storeLightings')->name('importLightings');
-Route::get('lightings/lightingsExcelIndex', 'ExcelController@lightingsIndex')->name('lightingsExcelIndex');
+Route::get('products/lightings/downloadExcel/{type}', 'ExcelController@downloadExcelLightings');
+Route::post('products/lightings/excel', 'ExcelController@storeLightings')->name('importLightings');
+Route::get('products/lightings/lightingsExcelIndex', 'ExcelController@lightingsIndex')->name('lightingsExcelIndex');
 
-Route::get('sterilizers/downloadExcel/{type}', 'ExcelController@downloadExcelSterilizers');
-Route::post('sterilizers/excel', 'ExcelController@storeSterilizers')->name('importSterilizers');
-Route::get('sterilizers/sterilizersExcelIndex', 'ExcelController@sterilizersIndex')->name('sterilizersExcelIndex');
+Route::get('products/sterilizers/downloadExcel/{type}', 'ExcelController@downloadExcelSterilizers');
+Route::post('products/sterilizers/excel', 'ExcelController@storeSterilizers')->name('importSterilizers');
+Route::get('products/sterilizers/sterilizersExcelIndex', 'ExcelController@sterilizersIndex')->name('sterilizersExcelIndex');
 
 
 /** ----------------------------------------------- Services ------------------------------------ **/
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
+
 /** Reef Controller **/
-Route::resource('reef','ReefController');
-Route::post('reef/create/reefFormAjax','ReefController@reefFormAjax');
-Route::patch('reef/{id}/edit/reefFormAjax','ReefController@reefFormAjax');
+Route::resource('services/reef','ReefController');
+Route::post('services/reef/create/reefFormAjax','ReefController@reefFormAjax');
+Route::patch('services/reef/{id}/edit/reefFormAjax','ReefController@reefFormAjax');
 
 /** Project Controller **/
-Route::resource('project','ProjectController');
+Route::resource('services/project','ProjectController');
 
 /** Water Parameters Controller **/
-Route::resource('waterparam','WaterParamController');
+Route::resource('services/waterparam','WaterParamController');
 
 
 /** ----------------------------------------------- Products ------------------------------------ **/
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
 
 /** Additives Controller **/
-Route::resource('additives','AdditiveController');
-Route::get('additives/quantity/{id}','AdditiveController@showQuantity');
-Route::post('additives/quantity/{id}','AdditiveController@updateQuantity')->name('additiveUpdateQuantity');
+Route::resource('products/additives','AdditiveController');
+Route::get('products/additives/quantity/{id}','AdditiveController@showQuantity');
+Route::post('products/additives/quantity/{id}','AdditiveController@updateQuantity')->name('additiveUpdateQuantity');
 
 /** Aquarium Controller **/
-Route::resource('aquariums','AquariumController');
-Route::get('aquariums/quantity/{id}','AquariumController@showQuantity');
-Route::post('aquariums/quantity/{id}','AquariumController@updateQuantity')->name('aquariumUpdateQuantity');
+Route::resource('products/aquariums','AquariumController');
+Route::get('products/aquariums/quantity/{id}','AquariumController@showQuantity');
+Route::post('products/aquariums/quantity/{id}','AquariumController@updateQuantity')->name('aquariumUpdateQuantity');
 
 /** Chiller Controller **/
-Route::resource('chillers','ChillerController');
-Route::get('chillers/quantity/{id}','ChillerController@showQuantity');
-Route::post('chillers/quantity/{id}','ChillerController@updateQuantity')->name('chillerUpdateQuantity');
+Route::resource('products/chillers','ChillerController');
+Route::get('products/chillers/quantity/{id}','ChillerController@showQuantity');
+Route::post('products/chillers/quantity/{id}','ChillerController@updateQuantity')->name('chillerUpdateQuantity');
 
 /** Coral Controller **/
-Route::resource('corals','CoralController');
-Route::get('corals/quantity/{id}','CoralController@showColors');
-Route::post('corals/quantity/{id}','CoralController@updateColors')->name('coralUpdateQuantity');
+Route::resource('products/corals','CoralController');
+Route::get('products/corals/quantity/{id}','CoralController@showColors');
+Route::post('products/corals/quantity/{id}','CoralController@updateColors')->name('coralUpdateQuantity');
 
 
 /** Filter Controller **/
-Route::resource('filters','FilterController');
-Route::get('filters/quantity/{id}','FilterController@showQuantity');
-Route::post('filters/quantity/{id}','FilterController@updateQuantity')->name('filterUpdateQuantity');
+Route::resource('products/filters','FilterController');
+Route::get('products/filters/quantity/{id}','FilterController@showQuantity');
+Route::post('products/filters/quantity/{id}','FilterController@updateQuantity')->name('filterUpdateQuantity');
 
 /** Fish Controller **/
-Route::resource('fish', 'FishController');
-Route::get('fish/addSizePrice/{id}','FishController@addSizePrice');
-Route::post('fish/addSizePrice','FishController@storeSizePrice')->name('storeSizePrice');
-Route::get('fish/updateSizePrice/{id}','FishController@showSizePrice');
-Route::post('fish/updateSizePrice/{id}','FishController@updateSizePrice')->name('updateSizePrice');
-Route::get('fish/destroySize/{id}','FishController@destroySize')->name('destroySize');
-Route::get('fish/create/{id}','FishController@fishFormAjax');
-Route::get('fish/quantity/{id}','FishController@showQuantity')->name('fishShowQuantity');
+Route::resource('products/fish', 'FishController');
+Route::get('products/fish/addSizePrice/{id}','FishController@addSizePrice');
+Route::post('products/fish/addSizePrice','FishController@storeSizePrice')->name('storeSizePrice');
+Route::get('products/fish/updateSizePrice/{id}','FishController@showSizePrice');
+Route::post('products/fish/updateSizePrice/{id}','FishController@updateSizePrice')->name('updateSizePrice');
+Route::get('products/fish/destroySize/{id}','FishController@destroySize')->name('destroySize');
+Route::get('products/fish/create/{id}','FishController@fishFormAjax');
+Route::get('products/fish/quantity/{id}','FishController@showQuantity')->name('fishShowQuantity');
 
 /** Food Controller **/
-Route::resource('food','FoodController');
-Route::get('food/quantity/{id}','FoodController@showQuantity');
-Route::post('food/quantity/{id}','FoodController@updateQuantity')->name('foodUpdateQuantity');
+Route::resource('products/food','FoodController');
+Route::get('products/food/quantity/{id}','FoodController@showQuantity');
+Route::post('products/food/quantity/{id}','FoodController@updateQuantity')->name('foodUpdateQuantity');
 
 /** Heater Controller **/
-Route::resource('heaters','HeaterController');
-Route::get('heaters/quantity/{id}','HeaterController@showQuantity');
-Route::post('heaters/quantity/{id}','HeaterController@updateQuantity')->name('heaterUpdateQuantity');
+Route::resource('products/heaters','HeaterController');
+Route::get('products/heaters/quantity/{id}','HeaterController@showQuantity');
+Route::post('products/heaters/quantity/{id}','HeaterController@updateQuantity')->name('heaterUpdateQuantity');
 
 /** Light Controller **/
-Route::resource('lightings','LightingController');
-Route::get('lightings/quantity/{id}','LightingController@showQuantity');
-Route::post('lightings/quantity/{id}','LightingController@updateQuantity')->name('lightingUpdateQuantity');
+Route::resource('products/lightings','LightingController');
+Route::get('products/lightings/quantity/{id}','LightingController@showQuantity');
+Route::post('products/lightings/quantity/{id}','LightingController@updateQuantity')->name('lightingUpdateQuantity');
 
 /** Sterilizer Controller **/
-Route::resource('sterilizers','SterilizerController');
-Route::get('sterilizers/quantity/{id}','SterilizerController@showQuantity');
-Route::post('sterilizers/quantity/{id}','SterilizerController@updateQuantity')->name('sterilizerUpdateQuantity');
+Route::resource('products/sterilizers','SterilizerController');
+Route::get('products/sterilizers/quantity/{id}','SterilizerController@showQuantity');
+Route::post('products/sterilizers/quantity/{id}','SterilizerController@updateQuantity')->name('sterilizerUpdateQuantity');
 
 
 /** ----------------------------------------------- Access ------------------------------------ **/
@@ -142,19 +150,18 @@ Route::post('sterilizers/quantity/{id}','SterilizerController@updateQuantity')->
 Route::get('/sadmin', 'SuperAdminController@index')->name('sadmin');
  
 Route::group( ['middleware' => ['auth','role:super_admin']], function()
-{     
-Route::get('sadmin/products', function () {
-    return view('/superadmin/products');
-})->name('products');
+{   
 
-Route::get('sadmin/services', function () {
-    return view('/superadmin/services');
-})->name('services');
-
+Route::resource('sadmin/settings/users','UserController');
+  
 Route::get('sadmin/settings', function () {
     return view('/superadmin/settings');
 })->name('settings');
 });
 
+
+
 /** Admin acces **/
 Route::get('/admin', 'AdminController@index');
+
+/** Simple user **/

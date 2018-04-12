@@ -44,7 +44,6 @@ class LoginController extends Controller
     {
         return redirect('/sadmin');
     } 
-
     return redirect('/home');
 }
     

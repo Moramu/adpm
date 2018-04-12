@@ -9,9 +9,9 @@
 	
 	<h1 class="pageH1">Import/Export Filters</h1>
 	<div class="pull-right">
-		<a href="{{ URL::to('filters/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
-		<a href="{{ URL::to('filters/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
-		<a href="{{ URL::to('filters/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
+		<a href="{{ URL::to('products/filters/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
+		<a href="{{ URL::to('products/filters/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
+		<a href="{{ URL::to('products/filters/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
     	</div>
 	<div>
 	<form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('importFilters') }}" class="form-horizontal" method="post" enctype="multipart/form-data">

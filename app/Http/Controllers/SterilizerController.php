@@ -27,7 +27,7 @@ class SterilizerController extends Controller
     public function index(Request $request)
     {
          $sterilizers = Sterilizer::orderBy('item_number','ASC')->paginate(10);
-	    return view('sterilizer.sterilizerIndex',compact('sterilizers'))
+	    return view('products.sterilizer.sterilizerIndex',compact('sterilizers'))
 	    ->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -38,7 +38,7 @@ class SterilizerController extends Controller
      */
     public function create()
     {
-        return view ('sterilizer.sterilizerCreate');
+        return view ('products.sterilizer.sterilizerCreate');
     }
 
     /**
@@ -76,7 +76,7 @@ class SterilizerController extends Controller
     public function show(Sterilizer $sterilizer)
     {
         $sterilizer = Sterilizer::find($sterilizer->id);
-	return View::make('sterilizer.sterilizerShow',compact('sterilizer'));
+	return View::make('products.sterilizer.sterilizerShow',compact('sterilizer'));
     }
 
     /**
@@ -87,7 +87,7 @@ class SterilizerController extends Controller
      */
     public function edit(Sterilizer $sterilizer)
     {
-         return view('sterilizer.sterilizerEdit',compact('sterilizer'));
+         return view('products.sterilizer.sterilizerEdit',compact('sterilizer'));
     }
 
     /**
@@ -133,7 +133,7 @@ class SterilizerController extends Controller
     
     public function showQuantity (Request $request,$id) {
     $sterilizer = Sterilizer::find($id);
-    return View::make('sterilizer.sterilizerUpdateQuantity',compact('sterilizer'));
+    return View::make('products.sterilizer.sterilizerUpdateQuantity',compact('sterilizer'));
     }
 
     //update quantity

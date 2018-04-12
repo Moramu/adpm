@@ -30,7 +30,7 @@ class HeaterController extends Controller
         // get all sorted from 1... X corals, by 10 on page with pagination
 	$heaters = Heater::orderBy('item_number','ASC')->paginate(10);
         // load the view and pass the heaters
-	return view('heater.heaterIndex',compact('heaters'))
+	return view('products.heater.heaterIndex',compact('heaters'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -41,7 +41,7 @@ class HeaterController extends Controller
      */
     public function create()
     {
-        return view ('heater.heaterCreate');
+        return view ('products.heater.heaterCreate');
     }
 
     /**
@@ -79,7 +79,7 @@ class HeaterController extends Controller
     public function show($id)
     {
         $heater = Heater::find($id);
-	return View::make('heater.heaterShow',compact('heater','id'));
+	return View::make('products.heater.heaterShow',compact('heater','id'));
     }
 
     /**
@@ -90,7 +90,7 @@ class HeaterController extends Controller
      */
     public function edit(Heater $heater)
     {
-        return view('heater.heaterEdit',compact('heater'));
+        return view('products.heater.heaterEdit',compact('heater'));
     }
 
     /**
@@ -134,7 +134,7 @@ class HeaterController extends Controller
 
     public function showQuantity (Request $request,$id) {
     $heater = Heater::find($id);
-    return View::make('heater.heaterUpdateQuantity',compact('heater'));
+    return View::make('products.heater.heaterUpdateQuantity',compact('heater'));
     }
     
     //update quantity

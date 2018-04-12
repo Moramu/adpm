@@ -65,4 +65,14 @@ class User extends Authenticatable
     }
     return false;
     }
+    
+    public function isAdmin(){
+	 foreach ($this->roles()->get() as $role)
+	{
+        if ($role->name == 'super_admin')
+        {
+            return true;
+        }
     }
+    }
+}

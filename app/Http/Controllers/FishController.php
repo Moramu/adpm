@@ -36,7 +36,7 @@ class FishController extends Controller
 	$fish = Fish::orderBy('item_number','ASC')->paginate(10);
 
         // load the view and pass the corals
-	return view('fish.fishIndex',compact('fish'))
+	return view('products.fish.fishIndex',compact('fish'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -50,7 +50,7 @@ class FishController extends Controller
         // load the create form 
 	//$types = DB::table("water_type")->lists("name","id");
 	$types = DB::table("water_type")->pluck("type","id");
-        return view('fish.fishCreate',compact('types'));
+        return view('products.fish.fishCreate',compact('types'));
     }
 
     /**
@@ -87,8 +87,8 @@ class FishController extends Controller
 	if(Input::file()){
 	$image = Input::file('photo');
     	$fileName  = time() . '.' . $image->getClientOriginalExtension();
-    	$path = public_path('/uploads/photo/' . $fileName);
-	Image::make(Input::file('photo'))->resize(100,100)->save($fileName);
+    	$path = public_path('/uploads/fish/'.$fileName);
+	Image::make(Input::file('photo'))->resize(100,100)->save($path);
 	$fish->item_number = $request -> item_number;
 	$fish->name = $request -> name;
 	$fish->photo = $fileName;
@@ -116,7 +116,7 @@ class FishController extends Controller
     {
 	$fish = Fish::find($id);
 	$size = fishSize::all();
-	return View::make('fish.fishShow',compact('fish','size'));
+	return View::make('products.fish.fishShow',compact('fish','size'));
 	
     }
 
@@ -131,7 +131,7 @@ class FishController extends Controller
         $fish = Fish::find($id);
 	$types = DB::table("water_type")->pluck("type","id");
 	$categories = DB::table("fish_categories")->pluck("category","type_id");
-        return view('fish.fishEdit',compact('fish','types','categories'));
+        return view('products.fish.fishEdit',compact('fish','types','categories'));
     }
     
      /**
@@ -153,8 +153,8 @@ class FishController extends Controller
 	if(Input::file()){
 	$image = Input::file('photo');
     	$fileName  = time() . '.' . $image->getClientOriginalExtension();
-    	$path = public_path('/uploads/photo/$id/' . $fileName);
-	Image::make(Input::file('photo'))->resize(100,100)->save($fileName);
+    	$path = public_path('/uploads/fish/'.$fileName);
+	Image::make(Input::file('photo'))->resize(100,100)->save($path);
 	Fish::where('id', $id)->update(array('photo' => $fileName,
 			'item_number'=>Input::get('item_number'),
 			'name'=>Input::get('name'),
@@ -188,13 +188,13 @@ class FishController extends Controller
 //	$fishSize = fishPrice::with('fishSize')->where('id',$fish->fish_size_id)->get();
 //	dd($fishSize);
 	
-	return View::make('fish.fishUpdateQuantity',compact('fish'));
+	return View::make('products.fish.fishUpdateQuantity',compact('fish'));
     }
 
     // add size view
     public function addSizePrice (Request $request,$id) {
 	$size = DB::table('fish_sizes')->pluck("size");
-	return view('fish.fishAddSizePrice', compact('id','size'));
+	return view('products.fish.fishAddSizePrice', compact('id','size'));
     }
 
     // store new price
@@ -216,7 +216,7 @@ class FishController extends Controller
 	}
 	else {
 	fishPrice::create($request->all());
-	    return redirect('fish/quantity/'.$fish_id)->with('success','Price added successfully');
+	    return redirect('products/fish/quantity/'.$fish_id)->with('success','Price added successfully');
 	}
     }
 
@@ -224,7 +224,7 @@ class FishController extends Controller
     public function showSizePrice (Request $request,$id){
 	$fish_size_id = $request->id;
 	$fishPrice = fishPrice::find($fish_size_id);	
-	return View::make('fish.fishUpdateSizePrice',compact('fishPrice'));
+	return View::make('products.fish.fishUpdateSizePrice',compact('fishPrice'));
     }
 
     // Updating size price and quantity
@@ -237,7 +237,7 @@ class FishController extends Controller
         ]);
 	fishPrice::find($id)->update($request->all());
 	$fp = fishPrice::find($id);
-	    return redirect('fish/quantity/'.$fp->fish_id)
+	    return redirect('products/fish/quantity/'.$fp->fish_id)
     		->with('success','Price updated successfully');
     }
 
@@ -245,7 +245,7 @@ class FishController extends Controller
     public function destroySize(Request $request,$id) {
 	$fp = fishPrice::find($id);
         fishPrice::find($id)->delete();
-        return redirect('fish/quantity/'.$fp->fish_id)
+        return redirect('products/fish/quantity/'.$fp->fish_id)
                         ->with('success','Size deleted successfully');
     }
     

@@ -28,7 +28,7 @@ class FoodController extends Controller
     public function index(Request $request)
     {
         $foods = Food::orderBy('item_number','ASC')->paginate(10);
-    return view('food.foodIndex',compact('foods'))
+    return view('products.food.foodIndex',compact('foods'))
 	->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -39,7 +39,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-         return view ('food.foodCreate');
+         return view ('products.food.foodCreate');
     }
 
     /**
@@ -77,7 +77,7 @@ class FoodController extends Controller
     public function show($id)
     {
 	$food = Food::find($id);
-	return View::make('food.foodShow',compact('food','id'));
+	return View::make('products.food.foodShow',compact('food','id'));
     }
 
     /**
@@ -88,7 +88,7 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        return view('food.foodEdit',compact('food'));
+        return view('products.food.foodEdit',compact('food'));
     }
 
     /**
@@ -134,7 +134,7 @@ class FoodController extends Controller
 
     public function showQuantity (Request $request,$id) {
     $food = Food::find($id);
-    return View::make('food.foodUpdateQuantity',compact('food'));
+    return View::make('products.food.foodUpdateQuantity',compact('food'));
     }
     //Update quantity
     public function updateQuantity (Request $request,$id) {

@@ -9,9 +9,9 @@
 	
 	<h1 class="pageH1">Import/Export Lightings</h1>
 	<div class="pull-right">
-		<a href="{{ URL::to('lightings/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
-		<a href="{{ URL::to('lightings/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
-		<a href="{{ URL::to('lightings/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
+		<a href="{{ URL::to('products/lightings/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
+		<a href="{{ URL::to('products/lightings/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
+		<a href="{{ URL::to('products/lightings/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
     	</div>
 	<div>
 	<form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('importLightings') }}" class="form-horizontal" method="post" enctype="multipart/form-data">

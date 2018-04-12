@@ -27,7 +27,7 @@ class AdditiveController extends Controller
     public function index(Request $request)
     {
 	$additives = Additive::orderBy('item_number','ASC')->paginate(10);
-	return view('additive.additiveIndex',compact('additives'))
+	return view('products.additive.additiveIndex',compact('additives'))
 	->with('i',($request->input('page',1)-1)*10);    
     }
 
@@ -38,7 +38,7 @@ class AdditiveController extends Controller
      */
     public function create()
     {
-        return view ('additive.additiveCreate');
+        return view ('products.additive.additiveCreate');
     }
 
     /**
@@ -77,7 +77,7 @@ class AdditiveController extends Controller
     {
         Additive::find($additive->id);
 //	dd($additive);
-	return View::make('additive.additiveShow',compact('additive'));
+	return View::make('products.additive.additiveShow',compact('additive'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AdditiveController extends Controller
      */
     public function edit(Additive $additive)
     {
-        return view('additive.additiveEdit',compact('additive'));
+        return view('products.additive.additiveEdit',compact('additive'));
     }
 
     /**
@@ -134,7 +134,7 @@ class AdditiveController extends Controller
         public function showQuantity(Request $request,$id){
 	$additive = Additive::find($id);
 //	dd($additive);
-    	return View::make('additive.additiveUpdateQuantity',compact('additive'));
+    	return View::make('products.additive.additiveUpdateQuantity',compact('additive'));
 
     }
     //update quantity

@@ -28,7 +28,7 @@ class FilterController extends Controller
     public function index(Request $request)
     {
      $filters = Filter::orderBy('item_number','ASC')->paginate(10);
-	return view('filter.filterIndex',compact('filters'))
+	return view('products.filter.filterIndex',compact('filters'))
 	    ->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -39,7 +39,7 @@ class FilterController extends Controller
      */
     public function create()
     {
-	return view ('filter.filterCreate');
+	return view ('products.filter.filterCreate');
     }
 
     /**
@@ -77,7 +77,7 @@ class FilterController extends Controller
     public function show($id)
     {
 	$filter = Filter::find($id);
-        return View::make('filter.filterShow',compact('filter','id'));
+        return View::make('products.filter.filterShow',compact('filter','id'));
     }
 
     /**
@@ -88,7 +88,7 @@ class FilterController extends Controller
      */
     public function edit(Filter $filter)
     {
-         return view('filter.filterEdit',compact('filter'));
+         return view('products.filter.filterEdit',compact('filter'));
     }
 
     /**
@@ -133,7 +133,7 @@ class FilterController extends Controller
     
     public function showQuantity (Request $request,$id) {
     $filter = Filter::find($id);
-    return View::make('filter.filterUpdateQuantity',compact('filter'));
+    return View::make('products.filter.filterUpdateQuantity',compact('filter'));
     }
     
     // update Quantity

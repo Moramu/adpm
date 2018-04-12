@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use Auth;
 use View;
 use App\Reef;
 use App\Coral;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use ConsoleTVs\Invoices\Classes\Invoice;
 
 class ReefController extends Controller
 {
@@ -25,7 +27,7 @@ class ReefController extends Controller
     public function index(Request $request)
     {
         $reefs = Reef::orderBy('created_at','ASC')->paginate(10);
-        return view('reef.reefIndex',compact ('reefs'))
+        return view('services.reef.reefIndex',compact ('reefs'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -38,7 +40,7 @@ class ReefController extends Controller
     {
         $corals = Coral::where('cost_price','>',0)
 	    ->orderBy('item_number','ASC')->get();
-	return view('reef.reefCreate',compact('corals'));
+	return view('services.reef.reefCreate',compact('corals'));
     }
 	//request value from input fields
     public function reefFormAjax(Request $request)
@@ -111,7 +113,7 @@ class ReefController extends Controller
 	unset($corals[$i]);
     	}
 	}
-        return View::make('reef.reefShow',compact('reef','corals'));
+        return View::make('services.reef.reefShow',compact('reef','corals'));
     }
 
     /**
@@ -127,7 +129,7 @@ class ReefController extends Controller
 	$corals = Coral::where('cost_price','>',0)
 	    ->orderBy('item_number','ASC')->get();
 
-        return view('reef.reefEdit',compact('reef','corals'));
+        return view('services.reef.reefEdit',compact('reef','corals'));
     }
 
     /**
@@ -186,5 +188,8 @@ class ReefController extends Controller
     {
 	Reef::find($reef->id)->delete();
         return redirect()->back();
+    }
+
+    public function printInvoice() {
     }
 }

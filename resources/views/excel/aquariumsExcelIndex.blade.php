@@ -9,9 +9,9 @@
 	
 	<h1 class="pageH1">Import/Export Aquriums</h1>
 	<div class="pull-right">
-		<a href="{{ URL::to('aquariums/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
-		<a href="{{ URL::to('aquariums/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
-		<a href="{{ URL::to('aquariums/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
+		<a href="{{ URL::to('products/aquariums/downloadExcel/xls') }}"><button class="btn btn-primary createButton">Download Excel xls</button></a>
+		<a href="{{ URL::to('products/aquariums/downloadExcel/xlsx') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download Excel xlsx</button></a>
+		<a href="{{ URL::to('products/aquariums/downloadExcel/csv') }}"><button class="btn btn-primary createButton" style="margin-right:5px;">Download CSV</button></a>
     	</div>
 	<div>
 	<form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ route('importAquariums') }}" class="form-horizontal" method="post" enctype="multipart/form-data">

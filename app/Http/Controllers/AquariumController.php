@@ -25,7 +25,7 @@ class AquariumController extends Controller
     public function index(Request $request)
     {
         $aquariums = Aquarium::orderBy('item_number','ASC')->paginate(10);
-	return view('aquarium.aquariumIndex',compact('aquariums'))
+	return view('products.aquarium.aquariumIndex',compact('aquariums'))
 		->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -36,7 +36,7 @@ class AquariumController extends Controller
      */
     public function create()
     {
-        return view ('aquarium.aquariumCreate');
+        return view ('products.aquarium.aquariumCreate');
     }
 
     /**
@@ -74,7 +74,7 @@ class AquariumController extends Controller
     public function show($id)
     {
         $aquarium = Aquarium::find($id);
-	return View::make('aquarium.aquariumShow',compact('aquarium','id'));
+	return View::make('products.aquarium.aquariumShow',compact('aquarium','id'));
     }
 
     /**
@@ -85,7 +85,7 @@ class AquariumController extends Controller
      */
     public function edit(Aquarium $aquarium)
     {
-        return view('aquarium.aquariumEdit',compact('aquarium'));
+        return view('products.aquarium.aquariumEdit',compact('aquarium'));
     }
 
     /**
@@ -131,7 +131,7 @@ class AquariumController extends Controller
 
     public function showQuantity (Request $request,$id) {
 	$aquarium = Aquarium::find($id);
-	return View::make('aquarium.aquariumUpdateQuantity',compact('aquarium'));
+	return View::make('products.aquarium.aquariumUpdateQuantity',compact('aquarium'));
     }    
 	
     public function updateQuantity (Request $request,$id) {

@@ -26,7 +26,7 @@ class LightingController extends Controller
     public function index(Request $request)
     {
 	$lightings = Lighting::orderBy('item_number','ASC')->paginate(10);
-	    return view('lighting.lightingIndex',compact('lightings'))
+	    return view('products.lighting.lightingIndex',compact('lightings'))
 	    ->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -37,7 +37,7 @@ class LightingController extends Controller
      */
     public function create()
     {
-        return view ('lighting.lightingCreate');
+        return view ('products.lighting.lightingCreate');
     }
 
     /**
@@ -75,7 +75,7 @@ class LightingController extends Controller
     public function show(Lighting $lighting)
     {
          $lighting = Lighting::find($lighting->id);
-	return View::make('lighting.lightingShow',compact('lighting'));
+	return View::make('products.lighting.lightingShow',compact('lighting'));
     }
 
     /**
@@ -86,7 +86,7 @@ class LightingController extends Controller
      */
     public function edit(Lighting $lighting)
     {
-         return view('lighting.lightingEdit',compact('lighting'));
+         return view('products.lighting.lightingEdit',compact('lighting'));
     }
 
     /**
@@ -131,7 +131,7 @@ class LightingController extends Controller
 
     public function showQuantity (Request $request,$id) {
     $lighting = Lighting::find($id);
-    return View::make('lighting.lightingUpdateQuantity',compact('lighting'));
+    return View::make('products.lighting.lightingUpdateQuantity',compact('lighting'));
     }
 
     //update quantity

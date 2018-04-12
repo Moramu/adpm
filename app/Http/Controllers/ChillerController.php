@@ -28,7 +28,7 @@ class ChillerController extends Controller
     public function index(Request $request)
     {
         $chillers = Chiller::orderBy('item_number','ASC')->paginate(10);
-	    return view('chiller.chillerIndex',compact('chillers'))
+	    return view('products.chiller.chillerIndex',compact('chillers'))
 	->with('i',($request->input('page',1)-1)*10);
     }
 
@@ -39,7 +39,7 @@ class ChillerController extends Controller
      */
     public function create()
     {
-         return view ('chiller.chillerCreate');
+         return view ('products.chiller.chillerCreate');
     }
 
     /**
@@ -77,7 +77,7 @@ class ChillerController extends Controller
     public function show($id)
     {
         $chiller = Chiller::find($id);
-        return View::make('chiller.chillerShow',compact('chiller','id'));
+        return View::make('products.chiller.chillerShow',compact('chiller','id'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ChillerController extends Controller
      */
     public function edit(Chiller $chiller)
     {
-         return view('chiller.chillerEdit',compact('chiller'));
+         return view('products.chiller.chillerEdit',compact('chiller'));
     }
 
     /**
@@ -133,7 +133,7 @@ class ChillerController extends Controller
     
     public function showQuantity (Request $request, $id) {
     $chiller = Chiller::find($id);
-    return View::make('chiller.chillerUpdateQuantity',compact('chiller'));
+    return View::make('products.chiller.chillerUpdateQuantity',compact('chiller'));
     }
 
     /** Update Quantity **/
