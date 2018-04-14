@@ -21,7 +21,7 @@
 <body>
     <div id="wrapper">
 	<header>
-	    <a href="/"><img class="top_logo" src="{{asset('aqua_logo.png')}}" alt="logo"></a>
+	    <a href="/"><img class="top_logo" src="{{asset('public/uploads/pictures/aqua_logo.png')}}" alt="logo"></a>
 	    <div class="dropdown">
     	    <button class="btn btn-primary-my dropdown-toggle" type="button" data-toggle="dropdown">{{ Auth::user()->name }}
     		<span class="caret"></span></button>
@@ -40,17 +40,19 @@
 			</li>
     		    </ul>
 	    </div>
-	    <img class="avatar" src="{{asset('no_ava.jpg')}}">	
+	    <img class="avatar" src="{{asset('public/uploads/pictures/no_ava.jpg')}}">	
 	</header>
 	<nav>
-	    <ul class="top-menu">
-		
-		<li id="home"><a href="{{route('sadmin')}}">Home</li>
+	    <ul class="top-menu">	
+		<li id="home"><a href="{{route('home')}}">Home</li>
 		<li id="products"><a href="{{route('products')}}">Products</li>
 		<li id="services"><a href="{{route('services')}}">Services</a></li>
+	    @if (auth()->check())
+    		@if (auth()->user()->isAdmin())
 		<li id="settings"><a href="{{route('settings')}}">Settings</a></li>
+		@endif
+	    @endif	
 		<li>
-		
 		    <form name="search" action="{{route('search')}}" method="POST" role="search">
 		    {{ csrf_field() }}
 		    <input class="search_field" type="text" name="search" placeholder="Search"><button class='searchButton' type="submit">GO</button>
@@ -59,15 +61,26 @@
 		</li>
 	    </ul>
 	</nav>
-	
+	@if (Request::is('home')||Request::is('home/*')) 
+        <script>
+        var p = document.getElementById("home");
+        p.className += " active";
+        </script>
+	@endif
+	@if (Request::is('home/search')) 
 	<div class="search">
 	@yield('content')
 	</div>
+	@else
+    	<div class="home">
+	@yield('content')
 	</div>
+	@endif	
+    </div>
+
     <footer>
-    <div id="footer">
+	<div id="footer">
 	</div>
-    </footer>
-    
+    </footer>	
 </body>
 </html>

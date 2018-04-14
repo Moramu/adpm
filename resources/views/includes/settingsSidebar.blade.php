@@ -8,6 +8,7 @@
 		    <li><a href="#">Products Managment</a></li>
 		    <li><a href="#">Service Managment</a></li>
 		    <li><a href="#">Genral Settings</a></li>
+		    <li><a href="{{route('announcement.index')}}">Announcement</a></li>
 		    <li><a href="{{route('users.index')}}">User Managment</a></li>
 		    <li><a href="#">Logs</a></li>	
 		</ul>

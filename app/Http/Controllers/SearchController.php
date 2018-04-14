@@ -42,7 +42,6 @@ use App\Sterilizer;
 
 	$sterilizers = Sterilizer::where('name','like','%'.$query.'%')->get();
 
-
         return view('search.search',compact('query','additives','aquariums','chillers','corals','filters','fish','foods','heaters','lights','sterilizers'));
     }
 

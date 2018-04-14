@@ -126,7 +126,7 @@ class WaterParamController extends Controller
 	
 	    
 
-        return view ('waterParams.waterParamIndex',compact('fresh1','fresh2','fresh3','salt1','salt2','office'));
+        return view ('services.waterParams.waterParamIndex',compact('fresh1','fresh2','fresh3','salt1','salt2','office'));
     }
 
     /**
@@ -136,7 +136,7 @@ class WaterParamController extends Controller
      */
     public function create()
     {
-        return view ('waterParams.waterParamCreate');
+        return view ('services.waterParams.waterParamCreate');
     }
 
     /**
@@ -154,7 +154,7 @@ class WaterParamController extends Controller
 	    'phosphate' => 'numeric|required',	
 	    ]);
         waterParam::create($request->all());
-	return redirect()->route('waterparam.index')
+	return redirect()->route('services.waterparam.index')
 		->with('succes','Parameters successfuly added');
     }
 

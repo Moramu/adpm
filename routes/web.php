@@ -17,8 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::any('products/search','SearchController@search')->name('search');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', function()
+{
+    $announcements = DB::table('announcements')->where('category', 'home')
+                                ->orderBy('id')
+                                ->paginate(3);
+    return View::make('home',compact('announcements'));
+})->name('home');
+
+Route::any('home/search','SearchController@search')->name('search');
 
 
 /** Test Routes **/
@@ -67,7 +76,7 @@ Route::get('products/sterilizers/sterilizersExcelIndex', 'ExcelController@steril
 
 /** ----------------------------------------------- Services ------------------------------------ **/
 Route::get('/services', function () {
-    return view('services');
+    return view('services.services');
 })->name('services');
 
 /** Reef Controller **/
@@ -84,7 +93,7 @@ Route::resource('services/waterparam','WaterParamController');
 
 /** ----------------------------------------------- Products ------------------------------------ **/
 Route::get('/products', function () {
-    return view('products');
+    return view('products.products');
 })->name('products');
 
 /** Additives Controller **/
@@ -153,10 +162,13 @@ Route::group( ['middleware' => ['auth','role:super_admin']], function()
 {   
 
 Route::resource('sadmin/settings/users','UserController');
+Route::resource('sadmin/settings/announcement','AnnouncementController');
   
 Route::get('sadmin/settings', function () {
-    return view('/superadmin/settings');
+    return view('settings.settings');
 })->name('settings');
+
+
 });
 
 

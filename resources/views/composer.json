@@ -1,5 +1,0 @@
-{
-    "require": {
-        "laravel/scout": "^4.0"
-    }
-}

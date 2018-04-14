@@ -21,7 +21,7 @@
 <body>
     <div id="wrapper">
 	<header>
-	    <a href="/"><img class="top_logo" src="{{asset('aqua_logo.png')}}" alt="logo"></a>
+	    <a href="https://aquadesignpro.com"><img class="top_logo" src="{{asset('public/uploads/pictures/aqua_logo.png')}}" alt="logo"></a>
 	    <div class="dropdown">
     	    <button class="btn btn-primary-my dropdown-toggle" type="button" data-toggle="dropdown">{{ Auth::user()->name }}
     		<span class="caret"></span></button>
@@ -40,7 +40,7 @@
 			</li>
     		    </ul>
 	    </div>
-	    <img class="avatar" src="{{asset('no_ava.jpg')}}">	
+	    <img class="avatar" src="{{asset('public/uploads/pictures/no_ava.jpg')}}">	
 	</header>
 	<nav>
 	    <ul class="top-menu">

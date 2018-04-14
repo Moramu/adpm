@@ -4,7 +4,6 @@
 <aside>
 	    <nav>
 		<ul class="aside-menu">
-		    <li><a href="">Material Price Calculator</a></li>
 		    <li id="reef"><a href="{{route('reef.index')}}">Reef Calculator</a></li>
 		    @if (Request::is('services/reef')||Request::is('services/reef/*'))
 		    <script>

@@ -383,6 +383,7 @@ class ComposerStaticInit71eec16695f1a592cc0511d1c4c2e7f3
     public static $classMap = array (
         'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
         'App\\Additive' => __DIR__ . '/../..' . '/app/Additive.php',
+        'App\\Announcement' => __DIR__ . '/../..' . '/app/Announcement.php',
         'App\\Aquarium' => __DIR__ . '/../..' . '/app/Aquarium.php',
         'App\\Chiller' => __DIR__ . '/../..' . '/app/Chiller.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -415,6 +416,7 @@ class ComposerStaticInit71eec16695f1a592cc0511d1c4c2e7f3
         'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Controllers\\SterilizerController' => __DIR__ . '/../..' . '/app/Http/Controllers/SterilizerController.php',
         'App\\Http\\Controllers\\SuperAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdminController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\WaterParamController' => __DIR__ . '/../..' . '/app/Http/Controllers/WaterParamController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CheckRole' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckRole.php',

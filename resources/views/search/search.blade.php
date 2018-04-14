@@ -1,4 +1,4 @@
-@extends('layouts.search')
+@extends('layouts.simple')
 
 @section('content')
 <div class="container">

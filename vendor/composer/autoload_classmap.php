@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'App\\Additive' => $baseDir . '/app/Additive.php',
+    'App\\Announcement' => $baseDir . '/app/Announcement.php',
     'App\\Aquarium' => $baseDir . '/app/Aquarium.php',
     'App\\Chiller' => $baseDir . '/app/Chiller.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -40,6 +41,7 @@ return array(
     'App\\Http\\Controllers\\SearchController' => $baseDir . '/app/Http/Controllers/SearchController.php',
     'App\\Http\\Controllers\\SterilizerController' => $baseDir . '/app/Http/Controllers/SterilizerController.php',
     'App\\Http\\Controllers\\SuperAdminController' => $baseDir . '/app/Http/Controllers/SuperAdminController.php',
+    'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\WaterParamController' => $baseDir . '/app/Http/Controllers/WaterParamController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\CheckRole' => $baseDir . '/app/Http/Middleware/CheckRole.php',
