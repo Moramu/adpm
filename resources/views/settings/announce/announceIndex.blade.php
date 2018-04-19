@@ -30,8 +30,8 @@
 	<td>{{ $announce->created_at }}</td>
 
         <td>
-	    <a class="btn btn-info " href="{{ route('corals.show',$announce->id) }}">Show Announce</a>
-	    <a class="btn btn-primary" href="{{ route('corals.edit',$announce->id) }}">Edit Announce</a>
+	    <a class="btn btn-info " href="{{ route('announcement.show',$announce->id) }}">Show Announce</a>
+	    <a class="btn btn-primary" href="{{ route('announcement.edit',$announce->id) }}">Edit Announce</a>
     	    {!! Form::open(['method' => 'DELETE','route' => ['announcement.destroy', $announce->id],'style'=>'display:inline','class'=>'confirm']) !!}
     	    {!! Form::submit('Delete', ['class' => 'btn btn-danger delete']) !!}
     	    {!! Form::close() !!}

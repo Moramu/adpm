@@ -18,16 +18,18 @@
             <th>Name</th>
 	    <th>Email</th>
 	    <th>Group</th>   
-            <th width="280px">Action</th>
+            <th width="180px">Action</th>
         </tr>
+	
     @foreach ($users as $key => $user)
     <tr>
         <td>{{ $user->id }}</td>
         <td>{{ $user->name }}</td>
 	<td>{{ $user->email }}</td>
-	<td></td>
+	    @foreach($user->roles as $ur)
+	<td>{{ $ur->name}}</td>
+	    @endforeach
         <td>
-            <a class="btn btn-info " href="{{ route('users.show',$user->id) }}">Show User</a>
             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit User</a>
     
 	    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline','class'=>'confirm']) !!}

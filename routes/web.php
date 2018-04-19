@@ -10,14 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 /** Main Routes **/
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+Route::get('announce/{id}', function($id) {
+    $announcement = DB::table('announcements')->find($id);
+    return View::make('announce',compact('announcement'));
+})->name('announce'); 
+});
 
 Route::get('/home', function()
 {
@@ -26,13 +31,10 @@ Route::get('/home', function()
                                 ->paginate(3);
     return View::make('home',compact('announcements'));
 })->name('home');
-
 Route::any('home/search','SearchController@search')->name('search');
 
 
 /** Test Routes **/
-Route::get('test', 'ReefController@printInvoice');
-
 
 /** Excel Controller **/
 Route::resource('excel', 'ExcelController');
@@ -76,8 +78,13 @@ Route::get('products/sterilizers/sterilizersExcelIndex', 'ExcelController@steril
 
 /** ----------------------------------------------- Services ------------------------------------ **/
 Route::get('/services', function () {
-    return view('services.services');
+    $announcements = DB::table('announcements')->where('category', 'services')
+                                ->orderBy('id')
+                                ->paginate(3);
+
+    return View::make('services.services',compact('announcements'));
 })->name('services');
+
 
 /** Reef Controller **/
 Route::resource('services/reef','ReefController');
@@ -92,9 +99,16 @@ Route::resource('services/waterparam','WaterParamController');
 
 
 /** ----------------------------------------------- Products ------------------------------------ **/
-Route::get('/products', function () {
-    return view('products.products');
+Route::get('/products', function()
+{
+    $announcements = DB::table('announcements')->where('category', 'products')
+                                ->orderBy('id')
+                                ->paginate(3);
+
+    return View::make('products.products',compact('announcements'));
 })->name('products');
+
+
 
 /** Additives Controller **/
 Route::resource('products/additives','AdditiveController');
@@ -170,6 +184,8 @@ Route::get('sadmin/settings', function () {
 
 
 });
+
+
 
 
 

@@ -16,12 +16,12 @@ class CreateWaterParamsTable extends Migration
         Schema::create('water_params', function (Blueprint $table) {
             $table->increments('id');
             $table->string('line');
-	    $table->double('ph');
+	    $table->double('ph',8,2);
 	    $table->integer('nitrite');
 	    $table->integer('nitrate');
-	    $table->double('phosphate');
+	    $table->double('phosphate',8,2);
 	    $table->integer('kh')->nullable();
-	    $table->double('salt')->nullable();
+	    $table->double('salt',8,2)->nullable();
 	    $table->timestamps();
         });
     }

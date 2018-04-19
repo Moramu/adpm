@@ -17,10 +17,10 @@ class CreateFishPricesTable extends Migration
             $table->increments('id');
             $table->integer('fish_id');
             $table->string('fish_size_id');
-            $table->double('price');
-            $table->double('rtl_price');
-            $table->double('wholesale_price');
-            $table->double('special_price')->nullable();
+            $table->double('price',8,2);
+            $table->double('rtl_price',8,2);
+            $table->double('wholesale_price',8,2);
+            $table->double('special_price',8,2)->nullable();
 	    $table->integer('quantity');
             $table->timestamps();
         });

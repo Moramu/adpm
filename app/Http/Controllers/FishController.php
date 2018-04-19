@@ -32,11 +32,14 @@ class FishController extends Controller
      */
     public function index (Request $request)
     {
+	$water_type = DB::table('water_type')->get()->pluck('type','id');
+	$fish_categories = DB::table('fish_categories')->get()->pluck('category','id');
 	// get all sorted from 1... X corals, by 10 on page with pagination
 	$fish = Fish::orderBy('item_number','ASC')->paginate(10);
+//	dd($water_type);
 
         // load the view and pass the corals
-	return view('products.fish.fishIndex',compact('fish'))
+	return view('products.fish.fishIndex',compact('fish','water_type','fish_categories'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -115,8 +118,10 @@ class FishController extends Controller
     public function show(Request $request,$id)
     {
 	$fish = Fish::find($id);
-	$size = fishSize::all();
-	return View::make('products.fish.fishShow',compact('fish','size'));
+	$water_type = DB::table('water_type')->get()->pluck('type','id');
+	$fish_categories = DB::table('fish_categories')->get()->pluck('category','id');
+	$size = fishSize::all()->pluck('size','id');
+	return View::make('products.fish.fishShow',compact('fish','size','water_type','fish_categories'));
 	
     }
 
@@ -183,12 +188,9 @@ class FishController extends Controller
     // quantity and sizes view
     public function showQuantity(Request $request,$id) {
 	$fish = Fish::find($id);
-//	$fish = Fish::with('fishPrice')->where();
-//	$fishSize = fishSize::with('fishPrice')->get();
-//	$fishSize = fishPrice::with('fishSize')->where('id',$fish->fish_size_id)->get();
-//	dd($fishSize);
-	
-	return View::make('products.fish.fishUpdateQuantity',compact('fish'));
+	$fish_sizes = DB::table('fish_sizes')->get()->pluck('size','id');	
+//	dd($fishSizes);
+	return View::make('products.fish.fishUpdateQuantity',compact('fish','fish_sizes'));
     }
 
     // add size view
@@ -219,12 +221,13 @@ class FishController extends Controller
 	    return redirect('products/fish/quantity/'.$fish_id)->with('success','Price added successfully');
 	}
     }
-
+    // products/fish/updateSizePrice/id
     //show size price
     public function showSizePrice (Request $request,$id){
+	$fishSizes = DB::table('fish_sizes')->get()->pluck('size','id');	
 	$fish_size_id = $request->id;
-	$fishPrice = fishPrice::find($fish_size_id);	
-	return View::make('products.fish.fishUpdateSizePrice',compact('fishPrice'));
+	$fishPrice = fishPrice::find($fish_size_id);
+	return View::make('products.fish.fishUpdateSizePrice',compact('fishPrice','fishSizes'));
     }
 
     // Updating size price and quantity

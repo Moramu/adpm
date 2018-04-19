@@ -24,19 +24,6 @@ class CreateCoralsTable extends Migration
 	    $table->double('retail_price')->nullable();
 	    $table->double('wholesale_price')->nullable();
 	    $table->bigInteger('barcode')->nullable();
-    	    $table->integer('blueridge')->nullable();
-	    $table->integer('blue')->nullable();
-	    $table->integer('brick')->nullable();
-	    $table->integer('yellow')->nullable();
-    	    $table->integer('dark_red')->nullable();
-	    $table->integer('orange')->nullable();
-	    $table->integer('green')->nullable();
-	    $table->integer('turquoise')->nullable();
-    	    $table->integer('purple')->nullable();
-	    $table->integer('pink')->nullable();
-	    $table->integer('mustard')->nullable();
-	    $table->integer('summary')->nullable();
-    	    $table->text('description')->nullable();
 	    $table->timestamps();
         });
     }

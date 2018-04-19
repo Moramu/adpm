@@ -3,12 +3,6 @@
 
 @section('content')
 
-	    <div class="pull-left">
-		<h1 class="pageH1">Edit Chiller</h1>
-	    </div>
-	    <div class="pull-right">
-		<a class="btn btn-info createButton" href="{{route('chillers.index') }}">Back</a>
-	    </div>
 
 
     @if (count($errors) > 0)
@@ -23,16 +17,18 @@
     @endif
 
 
-    {!! Form::model($chiller, ['method' => 'PATCH','route' => ['chillers.update', $chiller],'files'=>'true']) !!}
+	    <div class="pull-left">
+		<h1 class="pageH1">Edit User - <b>{{$user->name}}</b></h1>
+	    </div>
+	    <div class="pull-right">
+		<a class="btn btn-info createButton" href="{{route('users.index') }}">Back</a>
+	    </div>
+
+
+
+
+    {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user]]) !!}
     <div class="row">
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Item Number:</strong>
-                {!! Form::number('item_number', null, array('class' => 'form-control')) !!}
-            </div>
-        </div>
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,55 +40,32 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>List Price:</strong>
-                {!! Form::number('list_price', null, array('class' => 'form-control','step'=>'any')) !!}
+                <strong>Email:</strong>
+                {!! Form::email('email', null, array('class' => 'form-control')) !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>New Password:</strong>
+                {!! Form::password('password',array('class' => 'form-control')) !!}
             </div>
         </div>
 	
 	<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Extended price:</strong>
-                {!! Form::number('extended_price', null, array('class' => 'form-control','step'=>'any')) !!}
+                <strong>New Password Repeat:</strong>
+                {!! Form::password('password_repeat',array('class' => 'form-control')) !!}
             </div>
         </div>
-
+	@foreach ($user->roles as $role)
 	<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Co Stock:</strong>
-                {!! Form::number('co_stock', null, array('class' => 'form-control','step'=>'any')) !!}
-            </div>
+                <strong>Role:</strong>
+                {!! Form::select('role_id',$roles,$role->id,array('class' => 'form-control')) !!}
+	    </div>
         </div>
-	
-	<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Provider:</strong>
-                {!! Form::text('provider', null, array('class' => 'form-control')) !!}
-            </div>
-        </div>
-	
-	<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Retail Price:</strong>
-                {!! Form::number('rtl_price', null, array('class' => 'form-control','step'=>'any')) !!}
-            </div>
-        </div>
-
-	<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Wholesale Price:</strong>
-                {!! Form::number('whl_price', null, array('class' => 'form-control','step'=>'any')) !!}
-            </div>
-        </div>
-	
-	<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Quantity:</strong>
-                {!! Form::number('quantity', null, array('class' => 'form-control')) !!}
-            </div>
-        </div>
-
-
-
+	@endforeach	
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary pull-left">Submit</button>
         </div>

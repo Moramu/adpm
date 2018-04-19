@@ -32,7 +32,7 @@
     
     @foreach ($fish->fishPrice as $fz)
     <tr>
-	<td>{{$fz->fish_size_id}}</td>
+	<td>{{$fish_sizes[$fz->fish_size_id]}}</td>
 	<td>{{$fz->price}}</td>
 	<td>{{$fz->rtl_price}}</td>
 	<td>{{$fz->wholesale_price}}</td>

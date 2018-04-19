@@ -19,8 +19,8 @@ class CreateProjectsTable extends Migration
 	    $table->string('project_photo');
 	    $table->integer('corals');
 	    $table->integer('material');
-	    $table->double('rtl_price');
-	    $table->double('whl_price');
+	    $table->double('rtl_price',8,2);
+	    $table->double('whl_price',8,2);
 	    $table->double('description');
 	    $table->string('user');
             $table->timestamps();

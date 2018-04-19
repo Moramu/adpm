@@ -13,7 +13,7 @@
 	<h1 class="pageH1">Home</h1>
     </div>
 
-    <div class="homeAnnounce">
+    <div class="containerAnnounce">
 	@foreach($announcements as $an)
 	<div class="announce">
 	    <div class="announceHeader">
@@ -32,7 +32,7 @@
 		{{ str_limit($an->text,500)}}
 		</div>
 		<div class="announceRead">
-		     <button class="btn btn-primary-my dropdown-toggle" type="button">Read..</button>
+		    <a class="btn btn-primary-my" href="{{ route('announce',$an->id) }}">Read...</a>
 		</div>
 	    </div>
 	</div>

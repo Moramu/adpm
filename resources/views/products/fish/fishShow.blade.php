@@ -22,8 +22,8 @@
 	<td>{{$fish->name}}</td>
     	<td><img src="{{asset('public/uploads/fish/'.$fish->photo)}}"></td>
 	<td>{{$fish->barcode}}</td>
-	<td>{{$fish->type}}</td>
-	<td>{{$fish->category}}</td>
+	<td>{{$water_type[$fish->type]}}</td>
+	<td>{{$fish_categories[$fish->category]}}</td>
 	<td>{{$fish->description}}</td>
     </tr>
 </table>
@@ -42,10 +42,11 @@
 
     @foreach ($fish->fishPrice as $fp)
     <tr>
-	<td><b>{{$fp->fishSize}}<b></td>
+	<td>{{$size[$fp->fish_size_id]}}<b></td>
+	<td>{{$fp->price}}</td>	
 	<td>{{$fp->rtl_price}}</td>
 	<td>{{$fp->wholesale_price}}</td>
-	<td>{{$fp->pecial_price}}</td>
+	<td>{{$fp->special_price}}</td>
 	<td>{{$fp->quantity}}</td>
     </tr>
     @endforeach

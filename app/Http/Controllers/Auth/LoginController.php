@@ -42,7 +42,7 @@ class LoginController extends Controller
     {
     if(auth()->user()->hasRole('super_admin'))
     {
-        return redirect('/sadmin');
+        return redirect('/home');
     } 
     return redirect('/home');
 }

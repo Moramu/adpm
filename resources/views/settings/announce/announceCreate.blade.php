@@ -45,7 +45,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Category:</strong>
-                {!! Form::select('category',['home'=>'Home','products'=>'Products','services'=>'Services'], array('class' => 'form-control','step'=>'any')) !!}
+                {!! Form::select('category',['home'=>'Home','products'=>'Products','services'=>'Services'],null ,array('class' => 'form-control','step'=>'any')) !!}
             </div>
         </div>
 	

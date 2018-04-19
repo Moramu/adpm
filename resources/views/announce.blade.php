@@ -1,14 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.simple')
 
 @section('content')
-	
-    	    <div class="pull-left">
-	        <h1 class="pageH1">{{ $announcement->title }} </h1>
-	    </div>
-	    <div class="pull-right">
-		<a class="btn btn-primary createButton" href="{{route('announcement.index')}}">Back</a>
-	    </div>
 
+	    <div id="heading">
+	        <h1 class="pageH1">Announce</h1>
+	    </div>
+	
 <table class="table table-bordered">
     <tr>
 	<th>Title</th>
@@ -25,6 +22,9 @@
 	<td>{{$announcement->created_at}}</td>
     <tr>
 </table>
+    <div class="pull-right">
+		<a class="btn btn-primary createButton" href="{{route('home')}}">Back</a>
+	    </div>
     
 {!! Form::close() !!}
 @endsection

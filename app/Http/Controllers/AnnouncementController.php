@@ -67,7 +67,7 @@ class AnnouncementController extends Controller
     public function show(Announcement $announcement)
     {
         $announcement = Announcement::find($announcement->id);
-	return redirect()->route('announcement.show');
+	return view('settings.announce.announceShow',compact('announcement'));
     }
 
     /**
@@ -99,12 +99,12 @@ class AnnouncementController extends Controller
 	Image::make(Input::file('image'))->resize(400,400)->save($path);
 	$requestData = $request->all();
 	$requestData['image'] = $fileName;
-        Announcement::create($requestData);
+        Announcement::update($requestData);
 	}
 	else {
-	Announcement::create($request->all());
+	Announcement::update($request->all());
 	}
-	return redicrect()->route('annoucement.index')->with('success','Announcement successfuly created!');
+	return redirect()->route('announcement.index')->with('success','Announcement successfuly created!');
 
     }
 

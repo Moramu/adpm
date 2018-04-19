@@ -22,12 +22,12 @@ class AdminSeeder extends Seeder
 	DB::table('users')->insert([
 	'name'=>'sadmin',
 	'email'=>'sadmin@sadmin.com',
-	'password'=>bcrypt('sadmin');
+	'password'=>bcrypt('sadmin')
 	]);       
 	DB::table('users')->insert([
 	'name'=>'admin',
 	'email'=>'admin@admin.com',
-	'password'=>bcrypt('admin');
+	'password'=>bcrypt('admin')
 	]);
 	DB::table('role_user')->insert([
 	'role_id'=>'1',

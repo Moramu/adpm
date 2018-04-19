@@ -13,7 +13,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-                <h1 class="pageH1">Update Size Price <b>{{$fishPrice->fish_size_id}}</b></h2>
+                <h1 class="pageH1">Update Size Price - "<b>{{ucfirst($fishSizes[$fishPrice->fish_size_id])}}</b>"</h2>
                 <a class="btn btn-primary createButton" href="{{url('products/fish/quantity/'.$fishPrice->fish_id)}}">Back</a>
         
 

@@ -29,8 +29,8 @@
         <td>{{ $fishes->name }}</td>
     	<td><img src="{{asset('public/uploads/fish/'.$fishes->photo) }}"></td>
         <td>{{ $fishes->barcode }}</td>
-	<td>{{ $fishes->type }}</td>
-	<td>{{ $fishes->category }}</td>
+	<td>{{ $water_type[$fishes->type] }}</td>
+	<td>{{ $fish_categories[$fishes->category] }}</td>
         <td>{{str_limit( $fishes->description) }}</td>
         <td>
             <a class="btn btn-info " href="{{ route('fish.show',$fishes->id) }}">Show Fish</a>

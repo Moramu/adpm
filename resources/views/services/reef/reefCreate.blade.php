@@ -42,7 +42,7 @@
 	</tr>
 	<tr>
 	    <td>{!! Form::select('material_id',['Habitad Black']) !!}</td>
-	    <td>{!! Form::number('m_quantity',0,array('step'=>'any','class'=>'m_quantity')) !!}</td>
+	    <td>{!! Form::number('m_quantity',0,array('step'=>'any','class'=>'m_quantity','min'=>'0')) !!}</td>
 	    <td>{!! Form::number('m_price','497',array('class'=>'m_price','readonly' => 'true')) !!}</td>
 	    <td>{!! Form::number('m_price_rtl',0,array('class'=>'m_sum_rtl','readonly' => 'true','step'=>'any')) !!}</td>
     	    <td>{!! Form::number('m_price_whl',0,array('class'=>'m_sum_whl','readonly'=>'true','step'=>'any')) !!}</td>
@@ -72,7 +72,7 @@
 	    <td><img src="{{asset('public/uploads/coral/'.$coral->photo)}}"></td>
     	    <td>{!! Form::number('c_price_rtl['.$index.']',$coral->retail_price,array('readonly' => 'true'))!!}</td>
 	    <td>{!! Form::number('c_price_whl['.$index.']',$coral->wholesale_price,array('readonly' => 'true'))!!}</td>
-	    <td>{!! Form::number('c_quantity['.$index.']',0,array('class'=>'c_quantity')) !!}</td>
+	    <td>{!! Form::number('c_quantity['.$index.']',0,array('class'=>'c_quantity','min'=>'0')) !!}</td>
 	</tr>
 	@endforeach
 	</table>
@@ -88,8 +88,8 @@
 	    <td>Wholesale Price</td>
 	</tr>
 	<tr>
-	    <td>{!! Form::number('reef_sum_rtl',0,array('class'=>'reef_sum_rtl','readonly' => 'true','style'=>'width:75px'))!!}</td>
-	    <td>{!! Form::number('reef_sum_whl',0,array('class'=>'reef_sum_whl','readonly' => 'true','style'=>'width:75px'))!!}</td>
+	    <td>{!! Form::number('reef_sum_rtl',0,array('class'=>'reef_sum_rtl','style'=>'width:75px','step'=>'any'))!!}</td>
+	    <td>{!! Form::number('reef_sum_whl',0,array('class'=>'reef_sum_whl','style'=>'width:75px','step'=>'any'))!!}</td>
     	</tr>
 	</table>
 	</div>

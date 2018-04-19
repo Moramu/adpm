@@ -296,7 +296,7 @@ width:70px;
 }
 
 
-.homeAnnounce {
+.containerAnnounce {
     display: table;
     width: inherit; /*Optional*/
     table-layout: fixed; /*Optional*/
